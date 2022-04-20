@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: estoque-api
+management:
+ endpoints:
+    web:
+      exposure:
+        include:
+        - '*'
+estoque-api:
+ test: "olá"
+ default-value: "test-prod"
