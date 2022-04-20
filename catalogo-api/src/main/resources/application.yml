@@ -1,3 +1,19 @@
 spring:
   application:
     name: catalogo-api
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/catalogo?useTimezone=true&serverTimezone=UTC
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect
+  flyway:
+    url: jdbc:mysql://localhost:3306/
+    schemas:
+    - catalogo
+    user: root
+    password: root
