@@ -1,6 +1,12 @@
 spring:
   application:
     name: estoque-api
+  config:
+    import:
+    - optional:configserver:http://localhost:8888/
+  cloud:
+    config:
+      profile: dev
 management:
  endpoints:
     web:
