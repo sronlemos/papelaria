@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.sronlemos.carrinhoapi.domain.entity.Cliente;
 import com.github.sronlemos.carrinhoapi.domain.repository.ClienteRepository;
+import com.github.sronlemos.carrinhoapi.feignclients.ProdutoFeignClient;
 import com.github.sronlemos.carrinhoapi.rest.dto.ClienteDTO;
-import com.github.sronlemos.carrinhoapi.service.ProdutoService;
 
 @RestController
 public class ClienteController {
@@ -19,7 +19,7 @@ public class ClienteController {
 	private ClienteRepository clienteRepository;
 
 	@Autowired
-	private ProdutoService produtoService;
+	private ProdutoFeignClient produtoFeignClient;
 
 	@GetMapping("/clientes")
 	public List<Cliente> findAll() {
@@ -34,7 +34,7 @@ public class ClienteController {
 		ClienteDTO dto = new ClienteDTO();
 		dto.setId(cliente.getId());
 		dto.setNome(cliente.getNome());
-		dto.setProdutos(produtoService.findAll());
+		dto.setProdutos(produtoFeignClient.findAll());
 
 		return dto;
 	}
