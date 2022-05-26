@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.github.sronlemos.carrinhoapi.rest.dto.ProdutoDTO;
 
 @Component
-@FeignClient(value = "catalogo-api", url = "http://localhost:8000")
+@FeignClient(value = "catalogo-api", path = "/produtos")
 public interface ProdutoFeignClient {
 
-	@GetMapping("/produtos")
+	@GetMapping
 	public List<ProdutoDTO> findAll();
 
 }
