@@ -10,12 +10,16 @@ import org.springframework.web.client.RestTemplate;
 import io.github.resilience4j.bulkhead.annotation.Bulkhead;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name = "Produto teste endpoint")
 @RestController
 public class TesteProdutoController {
 
 	private Logger logger = LoggerFactory.getLogger(TesteProdutoController.class);
 
+	@Operation(summary = "teste de circuit breaker")
 	@GetMapping("/produtos")
 //	@Retry(name = "default", fallbackMethod = "fallbackMethod")
 //	@CircuitBreaker(name = "default", fallbackMethod = "fallbackMethod")
@@ -25,7 +29,7 @@ public class TesteProdutoController {
 		logger.info("Requisicao TesteProdutoController foi recebida!");
 //		ResponseEntity<String> forEntity = new RestTemplate().getForEntity("http://localhost:8080/falha", String.class);
 //		return forEntity.getBody();
-		return "produto teswt";
+		return "produto teste";
 	}
 
 	public String fallbackMethod(Exception ex) {

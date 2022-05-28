@@ -12,6 +12,10 @@ import com.github.sronlemos.carrinhoapi.domain.repository.ClienteRepository;
 import com.github.sronlemos.carrinhoapi.feignclients.ProdutoFeignClient;
 import com.github.sronlemos.carrinhoapi.rest.dto.ClienteDTO;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name = "Cliente endpoint")
 @RestController
 public class ClienteController {
 
@@ -21,11 +25,13 @@ public class ClienteController {
 	@Autowired
 	private ProdutoFeignClient produtoFeignClient;
 
+	@Operation(summary = "listar clientes")
 	@GetMapping("/clientes")
 	public List<Cliente> findAll() {
 		return clienteRepository.findAll();
 	}
 
+	@Operation(summary = "listar produtos por clientes")
 	@GetMapping("/clientes/{id}/produtos")
 	public ClienteDTO listarProdutosDoCliente(@PathVariable("id") Long id) {
 
