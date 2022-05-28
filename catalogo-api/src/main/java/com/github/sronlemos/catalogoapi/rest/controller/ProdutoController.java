@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.sronlemos.catalogoapi.domain.entity.Produto;
 import com.github.sronlemos.catalogoapi.domain.repository.ProdutoRepository;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name = "Produto endpoint")
 @RestController
 public class ProdutoController {
 	
@@ -20,6 +24,7 @@ public class ProdutoController {
 	@Autowired
 	private ProdutoRepository produtoRepository;
 
+	@Operation(summary = "listar produtos")
 	@GetMapping("/produtos")
 	public List<Produto> findAll() {
 		
@@ -28,6 +33,7 @@ public class ProdutoController {
 		return produtoRepository.findAll();
 	}
 
+	@Operation(summary = "listar produtos por id")
 	@GetMapping("/produtos/{id}")
 	public Produto findById(@PathVariable("id") Long id) {
 		return produtoRepository.findById(id).get();

@@ -17,6 +17,9 @@ spring:
     - carrinho
     user: root
     password: root
+springdoc:
+  api-docs:
+    path: carrinho-api/v3/api-docs
 eureka:
   client:
     service-url:
@@ -39,3 +42,4 @@ resilience4j:
     instances:
       default:
         max-concurrent-calls: 10
+        

@@ -12,10 +12,6 @@ public class GatewayApiConfiguration {
 	public RouteLocator gatewayRouter(RouteLocatorBuilder builder) {
 		return builder.routes()
 				.route(p -> p.path("/get")
-						.filters(f ->f
-								.addRequestHeader("Hello", "World")
-								.addRequestParameter("Hello", "World")
-								)
 						.uri("http://httpbin.org:80"))
 				.build();
 	}
